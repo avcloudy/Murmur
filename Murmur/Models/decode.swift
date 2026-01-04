@@ -8,6 +8,7 @@ import Foundation
     // ##############################
 
     // MARK: Error enum
+
 enum bencodeError: Error {
     case badBencodeStart(index: Int)
     case nonASCII

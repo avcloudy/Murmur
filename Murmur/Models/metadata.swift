@@ -24,7 +24,7 @@ public enum MetadataError: Error {
     case invalidFilePath
 }
 
-public class Torrent {
+public struct Metadata {
     public let announce: String
     public let announceList: [[String]]?
     public let comment: String?
@@ -35,10 +35,10 @@ public class Torrent {
     public let pieceLength: Int
     public let pieces: Data
     public let isPrivate: Bool?
-        // TODO: implement files as struct and build a Files struct in initialiser
     public let files: [fileList]?
     public let encoding: String?
     public let infoHash: Data
+    // TODO: I don't think I actually need the raw bencoded Info dict for anything, just the hash
     public let bencodedInfoDict: Data
     
     public init(path: String) throws {
@@ -166,25 +166,6 @@ public class Torrent {
         }
         
     }
-    
-        //    public static func == (lhs: Torrent, rhs: Torrent) -> Bool {
-        //        lhs.infoHash == rhs.infoHash
-        //    }
-    
-        //    private static func getInfoHash(data: Data) -> Data {
-        //        Data(Insecure.SHA1.hash(data: data))
-        //    }
-        //
-        //
-        //    private func bencodeInfoDict() -> Data {
-        //        var infoDict: Data = Data()
-        //        do {
-        //            infoDict = try encode(data: getInfoDict())
-        //        } catch {
-        //            print(error)
-        //        }
-        //        return infoDict
-        //    }
     
     public struct fileList {
         public let length: Int
